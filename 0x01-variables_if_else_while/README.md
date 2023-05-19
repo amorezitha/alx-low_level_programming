@@ -1,1 +1,1 @@
-0x01. C - Variables, if, else, while Readme file
+0x01. C - Variables, if, else, while readme file
