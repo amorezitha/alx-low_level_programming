@@ -56,10 +56,12 @@ char **strtow(char *str)
 			{
 				end = i;
 				tmp = (char *) malloc(sizeof(char) * (c + 1));
+
 				if (tmp == NULL)
 					return (NULL);
 				while (start < end)
-					*tmp = '\0';
+					*tmp++ = str[start++];
+				*tmp = '\0';
 				matrix[k] = tmp - c;
 				k++;
 				c = 0;
