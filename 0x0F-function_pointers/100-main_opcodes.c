@@ -23,13 +23,13 @@ int main(int argc, char *argv[])
 	if (bytes < 0)
 	{
 		printf("Error\n");
-                exit(2);
+		exit(2);
 	}
 	arr = (char *)main;
 
 	for (i = 0; i < bytes; i++)
 	{
-		if (i == bytes -1)
+		if (i == bytes - 1)
 		{
 			printf("%02hhx\n", arr[i]);
 			break;
