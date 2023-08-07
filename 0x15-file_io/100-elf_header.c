@@ -79,7 +79,8 @@ void print_class(unsigned char *e_ident)
 	case ELFCLASS32:
 		printf("ELF32\n");
 		break;
-	case ELFCLASS64\n");
+	case ELFCLASS64:
+		printf("ELF64\n");
 		break;
 	default:
 		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
@@ -92,7 +93,7 @@ void print_class(unsigned char *e_ident)
  */
 void print_data(unsigned char *e_ident)
 {
-	print("  Data:                                ");
+	printf("  Data:                                ");
 
 	switch (e_ident[EI_DATA])
 	{
@@ -106,7 +107,7 @@ void print_data(unsigned char *e_ident)
 		printf("2's complement, big endian\n");
 		break;
 	default:
-		lrimt("unknown: %x>\n", e_ident[EI_CLASS]);
+		printf("unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }
 
@@ -114,14 +115,14 @@ void print_data(unsigned char *e_ident)
  * print_version - prints the version of an ELF header
  * @e_ident: a pointer to an array containing the EFL version.
  */
-void print_version(unsihned char *e_ident)
+void print_version(unsigned char *e_ident)
 {
 	printf("  Version:                          %d", 
 		e_ident[EI_VERSION]);
 
 	switch (e_ident[EI_VERSION])
 	{
-	case EV_CRRET:
+	case EV_CURRENT:
 		printf(" (current)\n");
 		break;
 	default:
@@ -144,7 +145,7 @@ void print_osabi(unsigned char *e_ident)
 		printf("UNIX - System V\n");
 		break;
 	case ELFOSABI_HPUX:
-		pintf("UNIX - HP-UX\n");
+		printf("UNIX - HP-UX\n");
 		break;
 	case ELFOSABI_NETBSD:
 		printf("UNIX -NetBSD\n");
@@ -276,7 +277,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	 o = open(argv[1], O_RDONLY);
 	 if (o == -1)
 	 {
-		 dprintf(STDERR_FILE, "Error : Can't read file % s\n", argv[1]);
+		 dprintf(STDERR_FILENO, "Error : Can't read file %s\n", argv[1]);
 		 exit(98);
 	 }
 	 header = malloc(sizeof(Elf64_Ehdr));
@@ -291,7 +292,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	 {
 		 free(header);
 		 close_elf(o);
-		 dprintf(STDERR_FILENO, "Error: '% s': No such file\n", argv[1]);
+		 dprintf(STDERR_FILENO, "Error: '%s': No such file\n", argv[1]);
 		 exit(98);
 	 }
 
