@@ -10,17 +10,17 @@
  * @key: the key, string
  * the key is unique in the HashTable
  * @value: the value corresponding to a key
- * @nexr: A pointer to the next node of the List
+ * @next: A pointer to the next node of the List
  */
 typedef struct hash_node_s
 {
 	char *key;
 	char *value;
-	struct hash_node_s *nexr;
+	struct hash_node_s *next;
 } hash_node_t;
 
 /**
- * struct hash_table_t_t - Hash table data structure
+ * struct hash_table_s - Hash table data structure
  * @size: the size of the array
  * @rray: an array of size @size
  * Each cell of this array is a pointer to the first node of a linked list,
@@ -56,7 +56,7 @@ typedef struct shash_node_s
 	struct shash_node_s *next;
 	struct shash_node_s *sprev;
 	struct shash_node_s *snext;
-} struct shash_node_t;
+} shash_node_t;
 
 /**
  * struct shash_node_s - sorted hash table data structure
